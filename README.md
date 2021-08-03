@@ -47,7 +47,7 @@ The idea is to develop an application with service oriented architecture. The re
 ## Architecture
 ### Risk Assessment
 Risk Assement table analyses the possible risks I could encounter during the development and management of the project.
-<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/RiskAssesment.png" alt="Risk Assesment" />
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/risk assesment.png" alt="Risk Assesment" />
 All the highlighted rows were added later on during the development process after they became clear. The yellow risks are potential threat depending on how the development of the project is handled.
 ### Trello Board
 The progress of the project is documented using Trello as it is well suited for a small scale project. The initials setup of the board looks as follows:
