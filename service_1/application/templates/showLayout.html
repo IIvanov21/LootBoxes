@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>CS GO LootBoxes Simulator</title>
+    </head>
+    <body>
+        <div class='form'>
+            <form method='POST' action=''>
+                {{ show_form.hidden_tag() }}
+                <h2>Get your Loot Box</h2>
+                {{ show_form.submit}} 
+                <br>
+                {{ show_form.weapon_name.label }} {{ read_form.weapon_name.data }}
+                <br>
+                {{ show_form.weapon_type.label }} {{ read_form.weapon_type.data }}
+                <br>
+                {{ show_form.skin_name.label }} {{ read_form.skin_name.data }}
+                <br>
+                {{ show_form.condition.label }} {{ read_form.condition.data }}
+                <br>
+                {{ show_form.rarity.label }} {{ read_form.rarity.data }}%
+            </form>
+           
+        </div>
+    </body>
+</html>
