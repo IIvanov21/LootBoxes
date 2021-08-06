@@ -1,0 +1,25 @@
+pipeline{
+        agent any
+        stages{
+            stage('Setup'){
+                steps{
+                }
+            }
+            stage('Test'){
+                steps{
+                }
+            }
+            stage('Build'){
+                steps{
+                }
+            }
+            stage('Config'){
+                steps{
+                }
+            }
+            stage('Deploy'){
+                steps{
+                }
+            }
+        }
+}
