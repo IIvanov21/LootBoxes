@@ -11,16 +11,18 @@ def random_weapon():#Design for service 2
     weapons = {'Snipers':['SSG 08','AWP','SCAR-20','G3SG1'],'Assault Rifles':['FAMAS','M4A1-S','AK-47','SG 553','AUG'],'SMG':['MP9','MAC-10','P90','MP7','UMP-45']}
     weapon_type = random.choice(list(weapons))
     weapon_name = random.choice(weapons[weapon_type])
-    return weapon_choice = {weapon_type:weapon_name}
+    weapon_choice = {weapon_type:weapon_name}
+    return weapon_choice
 
 def random_skin():#Design for service 3
     skins = ['Printstream','Neo-Noir','Cyber Security','Monster Mashup', 'Fairy Tale','Hyperbeast']
     conditions = ['Factory New', 'Minimal Wear', 'Field_Tested', 'Well-Worn', 'Battle-Scarred']
     skin = random.choice(skins)
     condition = random.choice(conditions)
-    return skin_choice = {condition:skin}
+    skin_choice = {condition:skin}
+    return skin_choice
 
-def combine_information(weapon_choice,skin_choice)#Design for service 4
+def combine_information(weapon_choice,skin_choice):#Design for service 4
     # Scale factor is 1
     rarity_weapon_factor = {
     'Snipers':
@@ -46,7 +48,7 @@ def combine_information(weapon_choice,skin_choice)#Design for service 4
     condition, skin = list(skin_choice.items())[0]
     skin_rarity_factor = rarity_skin_factor[condition][skin]
 
-    rarity = ((weapon_rarity_factor+skin_rarity_factor) / 2)*100
+    rarity = round(((weapon_rarity_factor+skin_rarity_factor) / 2)*100,2)
 
     return rarity
 
@@ -55,6 +57,7 @@ def combine_information(weapon_choice,skin_choice)#Design for service 4
 def index():
     error=""   
     
+    show_form=ShowWeapon()
     if request.method=="POST":
         #Service 2: Get the weapon
         weapon_choice=random_weapon()
@@ -65,17 +68,16 @@ def index():
         #Service 4: Generate rarity
         rarity=combine_information(weapon_choice,skin_choice)
         #Store all the information in the table
-        new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condtion,rarity=rarity)
+        new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condition,rarity=rarity)
         db.session.add(new_weapon)
         db.session.commit()
         #Create simple form to display the data in the html file 
-        show_form=ShowWeapon()
         show_form.weapon_name.data = weapon
         show_form.weapon_type.data = weapon_type
-        show_form.skin_name = skin
-        show_form.condition = condition
-        show_form.rarity = rarity
-    return render_template('showLayout.html',form=show_form,message=error)
+        show_form.skin_name.data = skin
+        show_form.condition.data = condition
+        show_form.rarity.data = rarity
+    return render_template('showLayout.html',show_form=show_form,message=error)
 
 
     

@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  front-end:
+    container_name: "service-1"
+    image: iivanov21/service-1
+    build: service_1
+    ports:
+    - target: 5000
+      published: 5000
+    environment:
+      DATABASE_URI: ${DATABASE_URI}

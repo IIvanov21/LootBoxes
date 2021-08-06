@@ -10,7 +10,7 @@ class CustomWeapon(db.Model):
     weapon_type = db.Column(db.String(30))
     skin_name = db.Column(db.String(30))
     condition = db.Column(db.String(30))
-    rarity = db.Column(db.Decimal)
+    rarity = db.Column(db.Float)
 
 class ShowWeapon(FlaskForm):
     weapon_name = StringField("Weapon Name:")
