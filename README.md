@@ -55,3 +55,9 @@ The progress of the project is documented using Trello as it is well suited for 
 The full access to the board is here:https://trello.com/b/3Z7wkgZu/lootboxes
 The updated Trello Board:
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/KanBanBoard2.jpg" alt="KanBanBoard2" />
+## Inftrastructure
+### Entity Diagram
+The project utilises a single Entity Relationship Diagram with only one table. The table essentially describes the delivered information to the end user. Also describing the elements in the table will allow me as a developer to confirm the type of validation I need to take in account when implementing a feature and performing testing.
+<br>
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/Database.png" alt="Database" />
+<br>
