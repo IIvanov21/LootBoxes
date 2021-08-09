@@ -12,4 +12,4 @@ def random_weapon():#Design for service 2
     return weapon_choice
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0')

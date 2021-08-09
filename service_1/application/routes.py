@@ -23,16 +23,16 @@ def index():
 
     if request.method=="POST":
         #Service 2: Get the weapon
-        weapon_choice=requests.get('http://10.154.0.8:5001/get/weapon')
+        weapon_choice=requests.get('http://service_2:5000/get/weapon')
         weapon_choice=weapon_choice.json()
         weapon_type, weapon = list(weapon_choice.items())[0]
         #Service 3: Get the skin
-        skin_choice=requests.get('http://10.154.0.8:5002/get/skin')
+        skin_choice=requests.get('http://service_3:5000/get/skin')
         skin_choice=skin_choice.json()
         condition, skin = list(skin_choice.items())[0]
         #Service 4: Generate rarity
         weapon_info={weapon_type:weapon, condition:skin}
-        rarity=requests.post('http://10.154.0.8:5003/get/rarity',json=weapon_info).json()
+        rarity=requests.post('http://service_4:5000/get/rarity',json=weapon_info).json()
         #Store all the information in the table
         new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condition,rarity=rarity)
         db.session.add(new_weapon)

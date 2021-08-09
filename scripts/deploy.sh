@@ -1,2 +1,2 @@
 #!/bin/bash
-docker stack deploy --compose-file docker-compose.yaml service1
+docker stack deploy --compose-file docker-compose.yaml loot-boxes
