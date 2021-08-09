@@ -9,15 +9,6 @@ from sqlalchemy import asc, desc
 import requests
 import random
 
-
-def random_skin():#Design for service 3
-    skins = ['Printstream','Neo-Noir','Cyber Security','Monster Mashup', 'Fairy Tale','Hyperbeast']
-    conditions = ['Factory New', 'Minimal Wear', 'Field_Tested', 'Well-Worn', 'Battle-Scarred']
-    skin = random.choice(skins)
-    condition = random.choice(conditions)
-    skin_choice = {condition:skin}
-    return skin_choice
-
 def combine_information(weapon_choice,skin_choice):#Design for service 4
     # Scale factor is 1
     rarity_weapon_factor = {
@@ -64,7 +55,8 @@ def index():
         weapon_choice=weapon_choice.json()
         weapon_type, weapon = list(weapon_choice.items())[0]
         #Service 3: Get the skin
-        skin_choice=random_skin()
+        skin_choice=requests.get('http://10.154.0.8:5002/get/skin')
+        skin_choice=skin_choice.json()
         condition, skin = list(skin_choice.items())[0]
         #Service 4: Generate rarity
         #rarity=combine_information(weapon_choice,skin_choice)
