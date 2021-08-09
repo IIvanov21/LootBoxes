@@ -9,35 +9,7 @@ from sqlalchemy import asc, desc
 import requests
 import random
 
-def combine_information(weapon_choice,skin_choice):#Design for service 4
-    # Scale factor is 1
-    rarity_weapon_factor = {
-    'Snipers':
-    {'SSG 08':0.75,'AWP':0.2,'SCAR-20':0.9,'G3SG1':0.6},
-    'Assault Rifles':
-    {'FAMAS':0.9,'M4A1-S':0.5,'AK-47':0.55,'SG 553':0.7,'AUG':0.85},
-    'SMG':
-    {'MP9':0.2,'MAC-10':0.35,'P90':0.55,'MP7':0.1,'UMP-45':0.3}}
-    rarity_skin_factor = {
-    'Factory New':
-    {'Printstream':0.2,'Neo-Noir':0.3,'Cyber Security':0.1,'Monster Mashup':0.25, 'Fairy Tale':0.1,'Hyperbeast':0.5}, 
-    'Minimal Wear':
-    {'Printstream':0.3,'Neo-Noir':0.4,'Cyber Security':0.25,'Monster Mashup':0.3, 'Fairy Tale':0.2,'Hyperbeast':0.55},
-     'Field_Tested':
-    {'Printstream':0.45,'Neo-Noir':0.55,'Cyber Security':0.4,'Monster Mashup':0.35, 'Fairy Tale':0.28,'Hyperbeast':0.68},
-    'Well-Worn':
-    {'Printstream':0.55,'Neo-Noir':0.6,'Cyber Security':0.45,'Monster Mashup':0.45, 'Fairy Tale':0.3,'Hyperbeast':0.72},
-    'Battle-Scarred':
-    {'Printstream':0.72,'Neo-Noir':0.8,'Cyber Security':0.55,'Monster Mashup':0.60, 'Fairy Tale':0.35,'Hyperbeast':0.88}}
-    
-    weapon_type, weapon = list(weapon_choice.items())[0]
-    weapon_rarity_factor = rarity_weapon_factor[weapon_type][weapon]
-    condition, skin = list(skin_choice.items())[0]
-    skin_rarity_factor = rarity_skin_factor[condition][skin]
 
-    rarity = round(((weapon_rarity_factor+skin_rarity_factor) / 2)*100,2)
-
-    return rarity
 
 
 @app.route('/',methods=['GET','POST'])
@@ -59,9 +31,10 @@ def index():
         skin_choice=skin_choice.json()
         condition, skin = list(skin_choice.items())[0]
         #Service 4: Generate rarity
-        #rarity=combine_information(weapon_choice,skin_choice)
+        weapon_info={weapon_type:weapon, condition:skin}
+        rarity=requests.post('http://10.154.0.8:5003/get/rarity',json=weapon_info).json()
         #Store all the information in the table
-        new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condition,rarity=0)
+        new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condition,rarity=rarity)
         db.session.add(new_weapon)
         db.session.commit()
         #Create simple form to display the data in the html file 
@@ -69,7 +42,7 @@ def index():
         show_form.weapon_type.data = weapon_type
         show_form.skin_name.data = skin
         show_form.condition.data = condition
-        show_form.rarity.data = 0
+        show_form.rarity.data = rarity
 
         weapons=db.session.query(CustomWeapon).order_by(CustomWeapon.id.desc())
         if weapons.count() > 1 : 
