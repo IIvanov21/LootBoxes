@@ -6,14 +6,9 @@ from wtforms import SubmitField
 from application import app, db
 from application.classes import CustomWeapon, ShowWeapon
 from sqlalchemy import asc, desc
+import requests
 import random
 
-def random_weapon():#Design for service 2
-    weapons = {'Snipers':['SSG 08','AWP','SCAR-20','G3SG1'],'Assault Rifles':['FAMAS','M4A1-S','AK-47','SG 553','AUG'],'SMG':['MP9','MAC-10','P90','MP7','UMP-45']}
-    weapon_type = random.choice(list(weapons))
-    weapon_name = random.choice(weapons[weapon_type])
-    weapon_choice = {weapon_type:weapon_name}
-    return weapon_choice
 
 def random_skin():#Design for service 3
     skins = ['Printstream','Neo-Noir','Cyber Security','Monster Mashup', 'Fairy Tale','Hyperbeast']
@@ -65,15 +60,16 @@ def index():
 
     if request.method=="POST":
         #Service 2: Get the weapon
-        weapon_choice=random_weapon()
+        weapon_choice=requests.get('http://10.154.0.8:5001/get/weapon')
+        weapon_choice=weapon_choice.json()
         weapon_type, weapon = list(weapon_choice.items())[0]
         #Service 3: Get the skin
         skin_choice=random_skin()
         condition, skin = list(skin_choice.items())[0]
         #Service 4: Generate rarity
-        rarity=combine_information(weapon_choice,skin_choice)
+        #rarity=combine_information(weapon_choice,skin_choice)
         #Store all the information in the table
-        new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condition,rarity=rarity)
+        new_weapon=CustomWeapon(weapon_name=weapon,weapon_type=weapon_type,skin_name=skin,condition=condition,rarity=0)
         db.session.add(new_weapon)
         db.session.commit()
         #Create simple form to display the data in the html file 
@@ -81,7 +77,7 @@ def index():
         show_form.weapon_type.data = weapon_type
         show_form.skin_name.data = skin
         show_form.condition.data = condition
-        show_form.rarity.data = rarity
+        show_form.rarity.data = 0
 
         weapons=db.session.query(CustomWeapon).order_by(CustomWeapon.id.desc())
         if weapons.count() > 1 : 

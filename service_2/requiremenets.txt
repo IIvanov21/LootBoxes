@@ -7,4 +7,3 @@ pymysql
 selenium
 pytest
 pytest-cov
-requests
