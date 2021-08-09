@@ -9,3 +9,5 @@ services:
       published: 5000
     environment:
       DATABASE_URI: ${DATABASE_URI}
+    
+    
