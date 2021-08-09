@@ -6,6 +6,7 @@ venv/
 # C extensions
 *.so
 .env
+data.db
 # Distribution / packaging
 .Python
 build/

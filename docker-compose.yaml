@@ -2,7 +2,7 @@ version: '3.7'
 services:
   front-end:
     container_name: "service-1"
-    image: iivanov21/service-1
+    image: iivanov21/service-1:latest
     build: service_1
     ports:
     - target: 5000
