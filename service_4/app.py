@@ -26,6 +26,7 @@ rarity_skin_factor = {
 def combine_information():#Design for service 4
     weapon_type, weapon = list(request.json.items())[0]
     weapon_rarity_factor = rarity_weapon_factor[weapon_type][weapon]
+    
     condition, skin = list(request.json.items())[1]
     skin_rarity_factor = rarity_skin_factor[condition][skin]
 
