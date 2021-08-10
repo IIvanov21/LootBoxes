@@ -1,0 +1,19 @@
+# tasks file for nginx- 
+- name: 'Install NGINX using apt'
+  apt:
+    pkg:
+    - nginx
+    state: latest
+    update_cache: true
+
+
+- name: 'Copy NGINX conf file to the load balancer'
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+  notify: 'reload nginx'
+
+- name: 'Restart NGINX'
+  service:
+    name: nginx
+    state: restarted

@@ -1,0 +1,13 @@
+---
+- name: Copy Publick Key to Other Hosts
+  become: true
+  become_user: ansible
+  copy:
+    src: /.ssh/ansible_id.pub
+    dest: /.ssh/ansible_id.pub
+    mode: 0644
+- name: Append Public key in authorized_keys file
+  authorized_key:
+    user: ansible
+    state: present
+    key: "{{ lookup('file', '/.ssh/ansible_id.pub') }}"

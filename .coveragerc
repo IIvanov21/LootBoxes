@@ -1,5 +1,5 @@
 [run]
-include=service_1/application/routes.py,service_2/app.py,service_3/app.py,service_4/app.py
+include=service_1/application/*.py,service_2/app.py,service_3/app.py,service_4/app.py
 
 [report]
 exclude_lines =
