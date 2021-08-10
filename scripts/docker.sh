@@ -1,5 +1,5 @@
-sudo apt-get update
-sudo apt install curl -y
+apt-get update
+apt install curl -y
 curl https://get.docker.com | sudo bash
-sudo usermod -aG docker $(whoami)
+usermod -aG docker $(whoami)
 newgrp docker
