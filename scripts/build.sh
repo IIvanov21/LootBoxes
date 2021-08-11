@@ -5,7 +5,6 @@ echo $DATABASE_URI
 #Terminate if the script fails
 set -e
 
-export DATABASE_URI=${DATABASE_URI}
 #Build image
 docker-compose -f $WORKSPACE/docker-compose.yaml build --parallel
 
