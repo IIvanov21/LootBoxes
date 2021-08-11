@@ -5,7 +5,7 @@ sudo su - jenkins <<EOF
 #Terminate if the script fails
 set -e
 
-export DATBASE_URI=${DATABASE_URI}
+export DATABASE_URI=${DATABASE_URI}
 #Build image
 docker-compose -f $WORKSPACE/docker-compose.yaml build --parallel
 
