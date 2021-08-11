@@ -14,3 +14,5 @@ docker-compose build --parallel
 docker login -u $DOCKER_ID_USR -p $DOCKER_ID_PASSWORD
 
 docker-compose push
+
+exit
