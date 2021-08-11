@@ -6,7 +6,7 @@ echo $DATABASE_URI
 set -e
 
 #Build image
-docker-compose -f $WORKSPACE/docker-compose.yaml build --parallel
+docker-compose build --parallel
 
 #Push images
 docker login -u $DOCKER_ID_USR -p $DOCKER_ID_PSW
