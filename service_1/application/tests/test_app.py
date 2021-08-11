@@ -11,12 +11,14 @@ class TestBase(TestCase):
         app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///",
                 SECRET_KEY='TEST_SECRET_KEY',
                 DEBUG=True,
-                WTF_CSRF_ENABLED=False)
+                WTF_CSRF_ENABLED=False
+                )
 
         return app
 
     def setUp(self):
         db.create_all()
+        db.extend_existing=True
         new_weapon=CustomWeapon(weapon_name='AWP',weapon_type='Snipers',skin_name='Hyperbeast',condition='Factory New', rarity=20.2)
        
         db.session.add(new_weapon)
