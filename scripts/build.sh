@@ -1,4 +1,6 @@
 #!/bin/bash
+sudo su - jenkins <<EOF
+
 #export the environment variables in the script
 if [ -f .env ]
 then
@@ -16,3 +18,4 @@ docker login -u $DOCKER_ID_USR -p $DOCKER_ID_PASSWORD
 docker-compose push
 
 exit
+EOF
