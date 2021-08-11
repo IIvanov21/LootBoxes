@@ -22,8 +22,5 @@
   register: worker_token
   tags: swarm
 
-- name: 'Copy docker-compose-file'
-  template:
-    src: ~/LootBoxes/docker-compose.yaml
-    dest: ~/dockerfile/
+
   
