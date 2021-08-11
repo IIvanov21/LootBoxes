@@ -1,4 +1,7 @@
-if [-x "$(command -v docker)"]; then
+#!/bin/bash
+which docker
+if (($? == 0))
+then
     echo "Docker is installed!"
 else
     echo "Installing Docker"
