@@ -2,7 +2,7 @@ pipeline{
         agent any
         environment{
             DATABASE_URI= credentials("DATABASE_URI")
-            DOCKER_ID=credentials("DockerID")
+            DOCKER_ID=credentials("DOCKER_ID")
         }
         stages{
             stage('Setup'){
