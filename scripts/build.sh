@@ -6,7 +6,7 @@ sudo su - jenkins <<EOF
 set -e
 
 #Build image
-docker-compose build --parallel
+docker-compose build --parallel -f ${WORKSPACE}/LootBoxes/docker-compose.yaml
 
 #Push images
 docker login -u $DOCKER_ID_USR -p $DOCKER_ID_PASSWORD
