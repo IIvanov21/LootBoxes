@@ -1,11 +1,7 @@
 #!/bin/bash
 sudo su - jenkins <<EOF
 
-#export the environment variables in the script
-if [ -f .env ]
-then
-  export $(cat .env | sed 's/#.*//g' | xargs)
-fi
+
 #Terminate if the script fails
 set -e
 
