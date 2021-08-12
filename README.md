@@ -169,3 +169,18 @@ In similiar fashion JUnit provides a graph and table reports with all the tests 
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/JUnitGraph.png" alt="JUnitGraph" />
 <br>
+## Footer
+### Future Improvements
+   * Include a service that searches the internet and pulls an image of the weapon from the internet or designed storage of images.
+   * Include CRUD functionality:
+      * Create own weapon name and type, condition and skin.
+      * Read own weapon entries from the database.
+      * Update own weapons that have been created.
+      * Delete own weapon entries.
+   * Create Rarest Weapon Table that includes weapons you can get with the rarest factor.
+### Author
+Ivaylo Ivanov
+### Acknowledgements
+* Oliver Nichols
+* Ryan Wright
+      
