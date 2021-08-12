@@ -78,7 +78,25 @@ After gathering ideas for testing I designed a chart which showcases all the uni
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/UnitTesting.png" alt="UnitTesting" />
 <br>
+
 ## Infrastructure
+Continous Deployment is integrated in my project through the use of Jenkins. This allows automated testing to be performed to validate changes in the codebase and ensure they are stable for deployment. Once all tests pass Jenkins continous immediate autonomous deployment to the production environment. This allows me to fully implement new features with limited down-time and upon failure prevent deployment of the broken changes. So how does Jenkins work?
+### Jenkins
+When new content gets pushed on the .dev branch, Github will send a notification to Jenkins through a webhook which tells it to run the following pipeline:
+#### 1. Setup
+Jenkins installs all the dependecies needed to run the development environment on the VM it uses. This means dependecies such as docker, ansible, python and ensures all packages are up to date on the VM.
+#### 2. Test: pytest
+Unit tests outlined above are run everytime a new change is pushed. A coverage report is produced which can be viewed in the console output or .xml files which are used display the results with the help of Cobertura and JUnit plugins in Jenkins.
+#### 3. Building && Pushing
+Jenkins credential system is used to store login details for the Docker Hub and Databse. These credentials are used to login in DockerHub and with the help of docker-compose new images get built and pushed to the docker repository.
+#### 4. Ansible
+Ansible is used to handle several things for the load balancer, swarm manager and workers:
+   * Copy the relavent .ssh key to each VM.
+   * Install dependecies(docker,docker-compose and nginx)
+   * Setting up the swarm(Initialise manager and join workers)
+   * Setup/Reload NGINX with the nginx.conf file.
+#### 5. Deploy
+Jenkins simply compies accross the docker-compose.yaml in the swarm-manager node, SSH's into it to gain access and the runs docker stack deploy which creates all the relavent services needed..
 
 ### Entity Diagram
 The project utilises a single Entity Relationship Diagram with only one table. The table essentially describes the delivered information to the end user. Also describing the elements in the table will allow me as a developer to confirm the type of validation I need to take in account when implementing a feature and performing testing.
