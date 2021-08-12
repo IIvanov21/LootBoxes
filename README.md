@@ -55,6 +55,24 @@ The progress of the project is documented using Trello as it is well suited for 
 The full access to the board is here:https://trello.com/b/3Z7wkgZu/lootboxes
 The updated Trello Board:
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/KanBanBoard2.jpg" alt="KanBanBoard2" />
+View the original board here: https://trello.com/b/3Z7wkgZu/lootboxes
+### Analysis of Testing
+To understand what testing strategy I need the first thing I needed to do is investigate different types of testing. There are multiple forms of testing which can be implemented but I need to target tests which are in the scope of the project. These forms of testing mentioned bellow allow me to summarise different types together which can be followed sequientially and allow full testing for any size project.
+   * Unit testing - A way of testing the smallest piece of code that can be logically isolated in a system.
+   * Integration testing - individual software modules combined and tested as a group.
+   * API testing - testers validate that API connections and responses function as intended.
+   * UI testing - testing of UI controls like buttons, menus and text input to ensure that the experience flow and features chosen are optimal for the user experience.
+   * System testing - validate the complete and integrated software package to make sure it meets requirements.
+   * White-box testing - tests several aspects of the software, such as predefined inputs and expected outputs, as well as decision branches, loops and statements in the code.
+   * Black-box testing - testing against a system where the internal code, paths and infrastructure are not visible.
+   * Acceptance testing - ensure that the end user can achieve the goals set in the business requirements.
+   * Alpha testing - uses internal team members to evaluate the product.
+   * Beta testing - a soft launch, enabling you to get feedback from real users who have no prior knowledge of the app.
+   * Production testing - attempts to discover and triage user-reported defects as quickly as possible.
+The table below outlines the test I will consider during the MoSCoW priority to ensure I have sufficient testing that allows to test all my code in the limited development time I have.
+<br>
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/Testing.png" alt="Testing" />
+<br>
 ## Infrastructure
 
 ### Entity Diagram
