@@ -96,7 +96,7 @@ Ansible is used to handle several things for the load balancer, swarm manager an
    * Setting up the swarm(Initialise manager and join workers)
    * Setup/Reload NGINX with the nginx.conf file.
 #### 5. Deploy
-Jenkins simply compies accross the docker-compose.yaml in the swarm-manager node, SSH's into it to gain access and the runs docker stack deploy which creates all the relavent services needed..
+Jenkins simply compies accross the docker-compose.yaml in the swarm-manager node, SSH's into it to gain access and the runs docker stack deploy which creates all the relavent services needed.
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/CDPipeline.png" alt="CDPipeline" />
 <br>
@@ -104,4 +104,10 @@ Jenkins simply compies accross the docker-compose.yaml in the swarm-manager node
 The project utilises a single Entity Relationship Diagram with only one table. The table essentially describes the delivered information to the end user. Also describing the elements in the table will allow me as a developer to confirm the type of validation I need to take in account when implementing a feature and performing testing.
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/Database.png" alt="Database" />
+<br>
+
+### Interaction Diagram
+The layout of the virtual machines is configured with Docker Swarm to utilise a manager with workers, additionally on top of that there is another layer created with NGINX which handles all the connections from users and balances them equally between the manager and workers.
+<br>
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/LoadBalancer.png" alt="LoadBalancer" />
 <br>
