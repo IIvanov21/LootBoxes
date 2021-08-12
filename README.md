@@ -11,7 +11,7 @@
     * [Test Analysis](#analysis-of-testing)
 * [Infrastructure](#infrastructure)
     * [Jenkins](#jenkins) 
-    * [Entity Relationship Diagram](#entity-diagram)
+    * [Entity Diagram](#entity-diagram)
     * [Interaction Diagram](#interaction-diagram)
     * [Services](#services)
 * [Development](#development)
@@ -134,3 +134,5 @@ The target of refactoring here is essentially to make easier the deployment proc
 To depreciate some of the steps above I have created an extra roles in Ansible. This role automatically targets the SSH key on the Jenkins VM and copies it over to the swarm worker. This feature allows to avoid the human-error of accidently copying the wrong ssh keys and lowers the chance of encoutering errors during the Configuration Stage of the pipeline.
 #### Additional Scripts
 In case of the Jenkins VM getting corrupted I have created extra scripts for setting up Jenkins, Ansible, docker and docker compose. This essentially creates safeguards in place which quickly allow the developer to deploy new Jenkins VM. In addition if there is need to generate new SSH keys due to losing the old ones. The developer can simply copy accross the new keys to each swarm manager and worker with the Ansible role mentioned above.
+
+## Development
