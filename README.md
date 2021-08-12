@@ -145,7 +145,7 @@ The Front End application can be accessed by users using the NGINX VM's IP addre
 ### Unit Testing
 Unit testing tests each individual service route function with several scenarios and ensures they are working correctly. The unit test are designed to work with a Requests Mock module to allow full testing of the codebase and ensure it's fully functional without the need of building each service to perform testing. The Mock request shown in the image below simply mocks a requst for each back-end service and based on the information returned checks if it has worked.
 <br>
-<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/MockRequstSample.png" alt="MockRequestSample" />
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/MockRequestSample.png" alt="MockRequestSample" />
 <br>
 Like mentioned in previous sections every time a push is commited on GitHub, Jenkins starts the pipeline and before it runs any building and deployment steps, testing gets performed. When testing is performed Jenkins will print out a report in the console telling us which test have been succefully and provide a coverage report to tell which lines of the code base have been covered in the test. 
 <br>
