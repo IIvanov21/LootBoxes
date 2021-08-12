@@ -11,7 +11,7 @@
     * [Test Analysis](#analysis-of-testing)
 * [Infrastructure](#infrastructure)
     * [Jenkins](#jenkins) 
-    * [Entity Relationship Diagram](#entity-relationship-diagram)
+    * [Entity Relationship Diagram](#entity-diagram)
     * [Interaction Diagram](#interaction-diagram)
     * [Services](#services)
 * [Development](#development)
@@ -102,7 +102,7 @@ Jenkins simply compies accross the docker-compose.yaml in the swarm-manager node
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/CDPipeline.png" alt="CDPipeline" />
 <br>
 ### Entity Diagram
-The project utilises a single Entity Relationship Diagram with only one table. The table essentially describes the delivered information to the end user. Also describing the elements in the table will allow me as a developer to confirm the type of validation I need to take in account when implementing a feature and performing testing.
+The project utilises a single Entity Diagram with only one table. The table essentially describes the delivered information to the end user. Also describing the elements in the table will allow me as a developer to confirm the type of validation I need to take in account when implementing a feature and performing testing.
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/Database.png" alt="Database" />
 <br>
@@ -125,9 +125,12 @@ But realising to meet the MVP I needed a working database. Once I was able to ge
 In short for this application the front-end(service 1) will connect to the back-end services(service 2 and 3) through a GET request to gather the desired information. After that front-end service sends the responses received to back-end service 4 through a POST request to be combined and then send its response back. Now that all the information is gathered from the back-end services FRONT-END API will connect to MYSQL instance to store the information through INSERT, and then SELECT the old entries in order to be displayed as history.  
 
 ### Refactoring
+#### Ansible Additional Roles
 The target of refactoring here is essentially to make easier the deployment process for the developer to create new swarm-workers. To create a new swarm worker the developer has to go through the hassle of adding the SSH keys every time in the new workers. In short he has to perform the following steps:
 * Create new swarm-worker manually.
 * Get the ssh public key from the Jenkins VM.
 * Add it in the configuration settings of the new worker VM and test if the conncetion works.
+
 To depreciate some of the steps above I have created an extra roles in Ansible. This role automatically targets the SSH key on the Jenkins VM and copies it over to the swarm worker. This feature allows to avoid the human-error of accidently copying the wrong ssh keys and lowers the chance of encoutering errors during the Configuration Stage of the pipeline.
+#### Additional Scripts
 In case of the Jenkins VM getting corrupted I have created extra scripts for setting up Jenkins, Ansible, docker and docker compose. This essentially creates safeguards in place which quickly allow the developer to deploy new Jenkins VM. In addition if there is need to generate new SSH keys due to losing the old ones. The developer can simply copy accross the new keys to each swarm manager and worker with the Ansible role mentioned above.
