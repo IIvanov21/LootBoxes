@@ -4,7 +4,7 @@ echo $DATABASE_URI
 
 #Terminate if the script fails
 set -e
-
+docker-compose config
 #Build image
 docker-compose build --parallel
 
