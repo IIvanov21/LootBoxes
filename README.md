@@ -73,6 +73,11 @@ The table below outlines the test I will consider during the MoSCoW priority to 
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/Testing.png" alt="Testing" />
 <br>
+Given the results after gathering all the essential testing types only unit testing is essential to meet the requirements for the project. The other types of testing under Should Haves, Could Haves and Would Haves can ensure better and more robust functionality of the app but as time is critical they will only be considered at the end of the development cycle. 
+After gathering ideas for testing I designed a chart which showcases all the unit-testing performed during the development process of the app. The test are presented as pseudo-code to ensure I can follow them more closely while implementing them. The chart also showcase which type of tests have been completed and have passed while testing.
+<br>
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/UnitTesting.png" alt="UnitTesting" />
+<br>
 ## Infrastructure
 
 ### Entity Diagram
