@@ -12,7 +12,7 @@
 * [Infrastructure](#infrastructure)
     * [Jenkins](#jenkins) 
     * [Entity Relationship Diagram](#entity-relationship-diagram)
-    * [Docker Swarm](#docker-swarm)
+    * [Interaction Diagram](#interaction-diagram)
     * [Services](#services)
 * [Development](#development)
     * [Front-End Design](#front-end-design)
@@ -80,7 +80,8 @@ After gathering ideas for testing I designed a chart which showcases all the uni
 <br>
 
 ## Infrastructure
-Continous Deployment is integrated in my project through the use of Jenkins. This allows automated testing to be performed to validate changes in the codebase and ensure they are stable for deployment. Once all tests pass Jenkins continous immediate autonomous deployment to the production environment. This allows me to fully implement new features with limited down-time and upon failure prevent deployment of the broken changes. So how does Jenkins work?
+Continous Deployment is integrated in my project through the use of Jenkins. This allows automated testing to be performed to validate changes in the codebase and ensure they are stable for deployment. Once all tests pass Jenkins continous immediate autonomous deployment to the production environment. This allows me to fully implement new features with limited down-time and upon failure prevent deployment of the broken changes. So how does Jenkins work? 
+All the code for the pipeline can be found in the Jenkinsfile.
 ### Jenkins
 When new content gets pushed on the .dev branch, Github will send a notification to Jenkins through a webhook which tells it to run the following pipeline:
 #### 1. Setup
@@ -111,3 +112,15 @@ The layout of the virtual machines is configured with Docker Swarm to utilise a 
 <br>
 <img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/LoadBalancer.png" alt="LoadBalancer" />
 <br>
+In this diagram DockerSwarm creates a network of virtual machines that are all able to communicate between each other to provide the same service and allow users to access them. The layer that sits on top is another virtual machine which connects to all VMs created by DockerSwarm and creates a reverse-proxy to distribute traffic between VMs equally. Essentially this VM has NGINX load-balancer service running on it which directs connecting users to VM with the least connections. This extra layer also prevents the user to connect dirrectly to Swarm Manager or Worker which further increases security of the app. Also introduces further stability if one of the swarm VM dies it will automatically redirect the user to a working VM.
+### Services
+The services essentially connect between each through GET and POST request to provide the front-end application with the desired information based on the set requirements. The front-end service will store and get information from the Database. I essentially wasn't able to create a secure connection between the Database and for majority of development looked like this: 
+<br>
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/ServicesOld.png" alt="ServicesOld" />
+<br>
+But realising to meet the MVP I needed a working database. Once I was able to get the database working properly I adjusted the diagram:
+<br>
+<img src="https://github.com/IIvanov21/LootBoxes/blob/main/images/Services.png" alt="Services" />
+<br>
+In short for this application the front-end(service 1) will connect to the back-end services(service 2 and 3) through a GET request to gather the desired information. After that front-end service sends the responses received to back-end service 4 through a POST request to be combined and then send its response back. Now that all the information is gathered from the back-end services API-1 will connect to MYSQL instance to store the information through INSERT, and then SELECT the old entries in order to be displayed as history.  
+
