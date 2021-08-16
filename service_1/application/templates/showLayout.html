@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>CS GO LootBoxes Simulator</title>
+        <style>
+            body {
+                background-color: rgb(255, 0, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <div class='form'>
+            <form method='POST' action=''>
+                {{ show_form.hidden_tag() }}
+                <h2>Get your Loot Box</h2>
+                {{ show_form.submit}} 
+                <br>
+                {{ show_form.weapon_name.label }} {{ show_form.weapon_name.data }}
+                <br>
+                {{ show_form.weapon_type.label }} {{ show_form.weapon_type.data }}
+                <br>
+                {{ show_form.skin_name.label }} {{ show_form.skin_name.data }}
+                <br>
+                {{ show_form.condition.label }} {{ show_form.condition.data }}
+                <br>
+                {{ show_form.rarity.label }} {{ show_form.rarity.data }}
+                <br>
+                <h3> History </h3>
+                <b>{{ show_form_one.weapon_name.label }}</b> {{ show_form_one.weapon_name.data }}
+                <b>{{ show_form_one.weapon_type.label }}</b> {{ show_form_one.weapon_type.data }}
+                <b>{{ show_form_one.skin_name.label }}</b> {{ show_form_one.skin_name.data }}
+                <b>{{ show_form_one.condition.label }}</b> {{ show_form_one.condition.data }}
+                <b>{{ show_form_one.rarity.label }}</b> {{ show_form_one.rarity.data }}
+                <br>
+                <br>
+                <b>{{ show_form_two.weapon_name.label }}</b> {{ show_form_two.weapon_name.data }}
+                <b>{{ show_form_two.weapon_type.label }}</b> {{ show_form_two.weapon_type.data }}
+                <b>{{ show_form_two.skin_name.label }}</b> {{ show_form_two.skin_name.data }}
+                <b>{{ show_form_two.condition.label }}</b> {{ show_form_two.condition.data }}
+                <b>{{ show_form_two.rarity.label }}</b> {{ show_form_two.rarity.data }}
+                <br>
+                <br>
+                <b>{{ show_form_three.weapon_name.label }}</b> {{ show_form_three.weapon_name.data }}
+                <b>{{ show_form_three.weapon_type.label }}</b> {{ show_form_three.weapon_type.data }}
+                <b>{{ show_form_three.skin_name.label }}</b> {{ show_form_three.skin_name.data }}
+                <b>{{ show_form_three.condition.label }}</b> {{ show_form_three.condition.data }}
+                <b>{{ show_form_three.rarity.label }}</b> {{ show_form_three.rarity.data }}
+            </form>
+           
+        </div>
+    </body>
+</html>

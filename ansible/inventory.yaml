@@ -1,0 +1,21 @@
+workers:
+  hosts:
+    swarm-worker-one:
+    swarm-worker-two:
+  vars:
+    ansible_user: ansible
+    ansible_ssh_private_key_file: '~/.ssh/ansible_id'
+
+manager:
+  hosts:
+    swarm-manager:
+  vars:
+    ansible_user: ansible
+    ansible_ssh_private_key_file: '~/.ssh/ansible_id'
+
+loadbalancer:
+  hosts:
+    load-balancer:
+  vars:
+    ansible_user: ansible
+    ansible_ssh_private_key_file: '~/.ssh/ansible_id'

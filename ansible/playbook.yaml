@@ -1,0 +1,22 @@
+- hosts: 
+  - workers
+  - manager 
+  become: yes
+  roles:
+  - docker
+
+- hosts: loadbalancer
+  become: yes
+  roles:
+  - nginx
+
+- name: initialize docker swarm
+  hosts: manager
+  roles:
+    - InitialiseSwarm
+
+- name: add workers to the swarm
+  hosts: workers
+  roles:
+    - JoinSwarm
+

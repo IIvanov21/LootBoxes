@@ -1,0 +1,4 @@
+tests/__pycache__/
+tests/test_unit_*
+.env
+venv/
