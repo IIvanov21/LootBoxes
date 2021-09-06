@@ -8,7 +8,7 @@ services:
     - target: 5000
       published: 5000
     environment:
-      DATABASE_URI: 
+      DATABASE_URI: ${DATABASE_URI}
   service_2:
     container_name: "service-2"
     image: iivanov21/service-2:latest
@@ -21,6 +21,3 @@ services:
     container_name: "service-4"
     image: iivanov21/service-4:latest
     build: service_4
-    
-    
-    
