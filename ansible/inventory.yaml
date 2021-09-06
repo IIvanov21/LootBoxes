@@ -1,21 +1,20 @@
 workers:
   hosts:
-    swarm-worker-one:
-    swarm-worker-two:
+    swarm-worker:
   vars:
     ansible_user: ansible
-    ansible_ssh_private_key_file: '~/.ssh/ansible_id'
+    ansible_ssh_private_key_file: '~/.ssh/id_rsa'
 
 manager:
   hosts:
     swarm-manager:
   vars:
     ansible_user: ansible
-    ansible_ssh_private_key_file: '~/.ssh/ansible_id'
+    ansible_ssh_private_key_file: '~/.ssh/id_rsa'
 
 loadbalancer:
   hosts:
     load-balancer:
   vars:
     ansible_user: ansible
-    ansible_ssh_private_key_file: '~/.ssh/ansible_id'
+    ansible_ssh_private_key_file: '~/.ssh/id_rsa'
