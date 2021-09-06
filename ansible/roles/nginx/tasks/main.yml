@@ -17,3 +17,4 @@
   service:
     name: nginx
     state: restarted
+  ignore_errors: true
